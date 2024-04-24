@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokopididi Lite</title>
+</head>
+<body>
+    <h1>Tokopididi Lite</h1>
+    <a href="/login"><button>Login</button></a>
+    <a href="/registration"><button>Registration</button></a>
+
+    <h2>Product</h2>
+    <!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+<h2>A basic HTML table</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Stock</th>
+    <th>Price</th>
+  </tr>
+  <tr>
+    <%   data.forEach((e) => { %>
+        <td><%= e.name %></td>
+        <td><%= e.stock %> </td>
+        <td><%= e.price %></td>
+    <% }) %>
+  </tr>
+</table>
+</body>
+</html>
+
+
+</body>
+</html>

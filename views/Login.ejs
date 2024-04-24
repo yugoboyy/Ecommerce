@@ -7,10 +7,16 @@
 </head>
 <body>
     <h1>Login</h1>
-    <a href="/registration"><button>Registration</button></a>
+    <a href="/registration"><button>Registration</button></a><br><br>
     <% if(success) {%>
         <p style="color: green;">Success registration <%= success %></p><br><br>
     <%} %>
-
+    <form action="" method="post">
+          <label for=""><b>Email:</b></label><br>
+          <input type="text" placeholder="Enter Email" name="email" required><br><br>
+          <label for=""><b>Password:</b></label><br>
+          <input type="password" placeholder="Enter Password" name="password" required><br><br>
+          <button type="submit">Login</button>
+      </form>
 </body>
 </html>

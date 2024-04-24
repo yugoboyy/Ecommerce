@@ -14,10 +14,54 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Account.init({
-    name: DataTypes.STRING,
-    dateOfBirth: DataTypes.DATE,
-    gender: DataTypes.STRING,
-    UserId: DataTypes.INTEGER
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty:{
+          msg: 'Name is required'
+        },
+        notNull: {
+          msg: 'Name is required'
+        }
+      }
+    },
+    dateOfBirth: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        notEmpty:{
+          msg: 'Date of Birth is required'
+        },
+        notNull: {
+          msg: 'Date of Birth is required'
+        }
+      }
+    },
+    gender: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty:{
+          msg: 'Gender is required'
+        },
+        notNull: {
+          msg: 'Gender is required'
+        }
+      }
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty:{
+          msg: 'User Id Id is required'
+        },
+        notNull: {
+          msg: 'User Id is required'
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Account',

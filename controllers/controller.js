@@ -32,10 +32,20 @@ class Controller {
         }
     }
 
-    static async login(req, res) {
+    static async getLogin(req, res) {
         try {
             let { success } = req.query
             res.render('Login', { success })
+        } catch (error) {
+            res.send(error)
+            console.log(error)
+        }
+    }
+
+    static async showProduct(req, res) {
+        try {
+            let allProduct = await Product.findAll()
+            res.render('Product', { allProduct })
         } catch (error) {
             res.send(error)
             console.log(error)
