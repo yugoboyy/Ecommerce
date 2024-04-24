@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Club Soda - Schweppes, 355 Ml",
+        "stock": 55,
+        "price": 43000
+    },
+    {
+        "name": "Curry Powder Madras",
+        "stock": 67,
+        "price": 96000
+    },
+    {
+        "name": "Cabbage - Nappa",
+        "stock": 19,
+        "price": 48000
+    },
+    {
+        "name": "Wine - Cave Springs Dry Riesling",
+        "stock": 88,
+        "price": 410000
+    },
+    {
+        "name": "Rum - Dark, Bacardi, Black",
+        "stock": 26,
+        "price": 446000
+    },
+    {
+        "name": "Grapefruit - Pink",
+        "stock": 68,
+        "price": 431000
+    },
+    {
+        "name": "Cherries - Maraschino,jar",
+        "stock": 10,
+        "price": 80000
+    },
+    {
+        "name": "Petite Baguette",
+        "stock": 26,
+        "price": 156000
+    },
+    {
+        "name": "Tequila - Sauza Silver",
+        "stock": 62,
+        "price": 49000
+    },
+    {
+        "name": "Cheese Cheddar Processed",
+        "stock": 50,
+        "price": 275000
+    }
+]

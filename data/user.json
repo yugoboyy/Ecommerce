@@ -1,0 +1,52 @@
+[
+    {
+        "email": "idilston0@va.gov",
+        "password": "rahasia",
+        "role": "buyer"
+    },
+    {
+        "email": "jjimpson1@zimbio.com",
+        "password": "rahasia",
+        "role": "buyer"
+    },
+    {
+        "email": "hkneaphsey2@google.cn",
+        "password": "rahasia",
+        "role": "seller"
+    },
+    {
+        "email": "jtemperley3@yolasite.com",
+        "password": "rahasia",
+        "role": "seller"
+    },
+    {
+        "email": "hmccarrick4@homestead.com",
+        "password": "rahasia",
+        "role": "buyer"
+    },
+    {
+        "email": "rfurminger5@ted.com",
+        "password": "rahasia",
+        "role": "buyer"
+    },
+    {
+        "email": "lellett6@4shared.com",
+        "password": "rahasia",
+        "role": "buyer"
+    },
+    {
+        "email": "ecorbie7@economist.com",
+        "password": "rahasia",
+        "role": "seller"
+    },
+    {
+        "email": "sbarrand8@europa.eu",
+        "password": "rahasia",
+        "role": "seller"
+    },
+    {
+        "email": "cblamphin9@ihg.com",
+        "password": "rahasia",
+        "role": "seller"
+    }
+]
