@@ -346,7 +346,7 @@ class Controller {
                 errors = errors.split(',')
             }
             let findOneProduct = await Product.findByPk(id)
-            res.render('OrderForm', { findOneProduct, error, errors })
+            res.render('OrderForm', { findOneProduct, error, errors, formatRupiah})
         } catch (error) {
             res.send(error)
             console.log(error)

@@ -115,7 +115,7 @@
       <tr>
         <td><%= findOneProduct.name %></td>
         <td><%= findOneProduct.stock %> </td>
-        <td><%= findOneProduct.price %></td>  
+        <td><%= formatRupiah(findOneProduct.price) %></td>  
       </tr>
 </table><br><br>
 <form action="/orderform/<%= findOneProduct.id %>" method="post">
