@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order List</title>
+</head>
+<body>
+    <h1>Tokopididi Lite</h1><br><br>
+
+<h2>Your Orders</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Product</th>
+    <th>User</th>
+    <th>Amount</th>
+    <th>Quantity</th>
+  </tr>
+    <%   allProduct.forEach((e) => { %>
+      <tr>
+        <td><%= e.name %></td>
+        <td><%= e.ProductId %> </td>
+        <td><%= e.UserId %></td>
+        <td><%= e.amount %></td>
+        <td><%= e.quantity %></td>     
+      </tr>
+    <% }) %>
+    <td><a href=""><button>Buy</button></a></td>
+</table>
+</body>
+</html>
