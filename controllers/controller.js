@@ -1,7 +1,7 @@
 const { Account, Order, Product, User } = require('../models')
 const bcrypt = require('bcryptjs');
 const formatRupiah = require('../helper/formatRupiah');
-const { where } = require('sequelize');
+const { Op } = require('sequelize');
 
 class Controller {
 
@@ -38,6 +38,8 @@ class Controller {
                     return e.message
                 })
                 res.redirect(`/registration?errors=${err}`)
+            } else if (error.name == 'SequelizeUniqueConstraintError') {
+                res.redirect(`/registration?errors=${error.errors[0].message}`)
             } else {
                 res.send(error)
                 console.log(error)
@@ -103,22 +105,44 @@ class Controller {
     static async showProduct(req, res) {
         try {
             let { role, userId } = req.session
-            let allProduct = await Product.findAll({
-                order: [['name', 'ASC']]
-            })
+            let { fillter } = req.query
+            let option = {
+                order: [['name', 'ASC']],
+            }
+
+            let optionSellerProduct = {
+                where: {
+                    id: userId,
+                    role: 'Seller'
+                },
+                include: {
+                    model: Product
+                },
+                order: [[Product, 'name', 'ASC']]
+            }
+
+            if(fillter){
+                option.where = {
+                    name: {
+                        [Op.iLike]: `%${fillter}%`
+                    }
+                }
+
+                optionSellerProduct.include.where = {
+                    name: {
+                        [Op.iLike]: `%${fillter}%`
+                    }
+                }
+            }
+
             let findOneAccountDetail = await Account.findOne({
                 where: {
                     UserId: userId
                 }
             })
-            let sellerProduct = await User.findAll({
-                where: {
-                    id: userId,
-                    role: 'Seller'
-                },
-                include: Product,
-                order: [[Product, 'name', 'ASC']]
-            })
+            // res.send(sellerProduct)
+            let allProduct = await Product.findAll(option)
+            let sellerProduct = await User.findAll(optionSellerProduct)
             res.render('Product', { allProduct, role, findOneAccountDetail, formatRupiah, sellerProduct, userId })
         } catch (error) {
             res.send(error)
@@ -285,8 +309,10 @@ class Controller {
             let data = await Order.findAll({
                 where: {
                     ProductId: id
-                }
+                },
+                include: Product
             })
+            // res.send(data)
             res.render('Inventory', { data, formatRupiah })
         } catch (error) {
             res.send(error)
@@ -296,9 +322,16 @@ class Controller {
 
     static async getOrderList(req, res) {
         try {
-            let { name, amount, quantity } = req.body
-            let { ProductId, UserId } = req.params
-            // res.render('OrderList', { allProduct })
+            let { id } = req.params
+            let userOrderList = await Order.findAll({
+                where: {
+                    UserId: id
+                },
+                order: [['name', 'ASC']],
+                include: Product
+            })
+            // res.send(userOrderList)
+            res.render('OrderList', { userOrderList, formatRupiah })
         } catch (error) {
             res.send(error)
             console.log(error)
@@ -328,9 +361,9 @@ class Controller {
             let findOneProduct = await Product.findByPk(id)
             if (quantity > findOneProduct.stock) {
                 res.redirect(`/orderform/${id}?error=Quantity maximum ${findOneProduct.stock}`)
-            } else if(!address){
+            } else if (!address) {
                 res.redirect(`/orderform/${id}?error=Address is required`)
-            }else {
+            } else {
                 await Order.create({
                     name: findOneProduct.name,
                     ProductId: id,

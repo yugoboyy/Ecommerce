@@ -47,22 +47,48 @@
       font-family: arial, sans-serif;
       border-collapse: collapse;
       width: 100%;
+      text-align: center;
     }
 
     form {
       font-family: arial, sans-serif;
       border-collapse: collapse;
       width: 100%;
+      text-align: center;
     }
     
     td, th {
       border: 1px solid #dddddd;
-      text-align: left;
+      text-align: center;
+      padding: 8px;
+    }
+
+    h1 {
+      border: 0px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+    }
+
+    h2 {
+      border: 0px solid #dddddd;
+      text-align: center;
       padding: 8px;
     }
     
     tr:nth-child(even) {
       background-color: #dddddd;
+    }
+
+    button {
+    width: 100%;
+    background-color: #f30a0a;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
     }
     </style>
     <meta charset="UTF-8">
@@ -72,11 +98,11 @@
 <body>
 <h1>Tokopididi Lite</h1><br>
 <% if(error) {%>
-  <b style="color: red;"><%= error %></b>
+  <p style="color: red; text-align: center;"><%= error %></p>
 <%} %>
 <% if(errors) {%>
   <% errors.forEach((e) => {%>
-    <b style="color: red;"><%= e %></b><br>
+    <p style="color: red; text-align: center;"><%= e %></p>
   <%}) %>
 <%} %>
 <h2>Order</h2>
@@ -100,5 +126,6 @@
   </select><br><br>
   <input type="submit" value="Buy">
 </form>
+<a href="/"><Button>Cancel</Button></a>
 </body>
 </html>

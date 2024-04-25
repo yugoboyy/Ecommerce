@@ -34,8 +34,8 @@
     }
 
     button {
-    width: 20%;
-    background-color: #4CAF50;
+    width: 100%;
+    background-color: #f30a0a;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -59,11 +59,19 @@
       font-family: arial, sans-serif;
       border-collapse: collapse;
       width: 100%;
+      text-align: center;
     }
     
     td, th {
       border: 1px solid #dddddd;
-      text-align: left;
+      text-align: center;
+      padding: 8px;
+    }
+
+    h1 {
+      font-family: arial, sans-serif;
+      border: 0px solid #dddddd;
+      text-align: center;
       padding: 8px;
     }
     
@@ -76,18 +84,19 @@
     <title>Add Stock</title>
 </head>
 <body>
-<h2>Add Stock</h2>
+<h1>Add Stock</h1>
 <br>
 <% if(error) {%>
-  <b style="color: red;"><%= error %></b><br><br>
+  <p style="color: red; text-align: center;"><%= error %></p>
 <%} %>
 <form action="/addStock/<%= findOneProduct.id %>/<%= UserId %>" method="post">
-  <label for=""><b>Name: <%= findOneProduct.name %></b></label><br>
+  <label for=""><b>Product Name: <%= findOneProduct.name %></b></label><br>
   <label for=""><b>Latest stock: <%= findOneProduct.stock %></b></label><br>
   <label for=""><b>Price: <%= formatRupiah(findOneProduct.price) %></b></label><br><br>
   <label for=""><b>Add Stock: </b></label>
   <input type="number" name="stock"  value=""><br><br>
   <input type="submit" value="Add Stock">
 </form>
+<a href="/"><Button>Cancel</Button></a>
 </body>
 </html>

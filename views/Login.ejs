@@ -1,95 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        input[type=text], select {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        }
+  <style>
+    input[type=text],
+    select {
+      width: 50%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
 
-        input[type=password], select {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        }
+    input[type=password],
+    select {
+      width: 50%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
 
-        button[type=submit] {
-        width: 100%;
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        }
-    
-        button {
-          width: 10%;
-          background-color: #4CAF50;
-          color: white;
-          padding: 14px 20px;
-          margin: 8px 0;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          text-align: center;
-        }
+    button[type=submit] {
+      width: 50%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-        button[type=submit]:hover {
-        background-color: #45a049;
-        }
+    button {
+      width: 70%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+    }
 
-        div {
-        border-radius: 5px;
-        background-color: #f2f2f2;
-        padding: 20px;
-        }
-    
-        form {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-        }
-        
-        td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-        }
-        
-        tr:nth-child(even) {
-          background-color: #dddddd;
-        }
-        </style>
+    .container {
+      height: 100px;
+      position: relative;
+      border: 0px solid green;
+    }
+
+    .vertical-center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      right: 3%;
+      left: 24%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+    button[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+    div {
+      border-radius: 5px;
+      padding: 20px;
+    }
+
+    form {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    h1 {
+      border: 0px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+  </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 </head>
 <body>
     <h1>Login</h1>
-    <a href="/registration" ><button>Registration</button></a><br><br>
     <% if(success) {%>
-        <p style="color: green;"><b>Success registration email: <%= success %></b></p>
-    <%} %>
-    <% if(errors) {%>
-        <p style="color: red;"><b><%= errors %></b></p>
-    <%} %>
-    <form action="" method="post">
+      <p style="color: green;"><b>Success registration email: <%= success %></b></p>
+      <%} %>
+      <% if(errors) {%>
+        <p style="color: red; text-align: center;"><b><%= errors %></b></p>
+        <%} %>
+        <form action="" method="post">
           <label for=""><b>Email:</b></label><br>
           <input type="text" placeholder="Enter Email" name="email" ><br><br>
           <label for=""><b>Password:</b></label><br>
           <input type="password" placeholder="Enter Password" name="password" ><br><br>
           <button type="submit">Login</button>
-      </form>
+        </form>
+        <div class="container">
+            <div class="vertical-center">
+        <a href="/registration"><button>Registration</button></a><br><br>
+      </div>
+    </div>
 </body>
 </html>

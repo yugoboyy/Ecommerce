@@ -6,16 +6,39 @@
       font-family: arial, sans-serif;
       border-collapse: collapse;
       width: 100%;
+      text-align: center;
     }
     
     td, th {
       border: 1px solid #dddddd;
-      text-align: left;
+      text-align: center;
+      padding: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 8px;
+    }
+
+    h2 {
+      text-align: center;
       padding: 8px;
     }
     
     tr:nth-child(even) {
       background-color: #dddddd;
+    }
+
+    button {
+        width: 20%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
     }
     </style>
     <meta charset="UTF-8">
@@ -23,27 +46,30 @@
     <title>Order List</title>
 </head>
 <body>
-    <h1>Tokopididi Lite</h1><br><br>
-
+  <a href="/"><button>Home</button></a>
+    <h1>Tokopididi Lite</h1>
 <h2>Your Orders</h2>
 <table>
   <tr>
+    <th>No.</th>
     <th>Name</th>
-    <th>Product</th>
-    <th>User</th>
-    <th>Amount</th>
     <th>Quantity</th>
+    <th>Price</th>
+    <th>Amount</th>
+    <th>Address</th>
+    <th>Order Date</th>
   </tr>
-    <%   allProduct.forEach((e) => { %>
+    <%   userOrderList.forEach((e, i) => { %>
       <tr>
+        <td><%= i+1 %></td>
         <td><%= e.name %></td>
-        <td><%= e.ProductId %> </td>
-        <td><%= e.UserId %></td>
-        <td><%= e.amount %></td>
-        <td><%= e.quantity %></td>     
+        <td><%= e.quantity %></td>
+        <td><%= formatRupiah(e.Product.price) %></td>     
+        <td><%= formatRupiah(e.amount) %></td>
+        <td><%= e.address %></td>
+        <td><%= e.formatDate %></td>
       </tr>
     <% }) %>
-    <td><a href=""><button>Buy</button></a></td>
 </table>
 </body>
 </html>

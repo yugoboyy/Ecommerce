@@ -59,11 +59,17 @@
           font-family: arial, sans-serif;
           border-collapse: collapse;
           width: 100%;
+          text-align: center;
         }
         
         td, th {
           border: 1px solid #dddddd;
           text-align: left;
+          padding: 8px;
+        }
+
+        h1 {
+          text-align: center;
           padding: 8px;
         }
         
@@ -80,7 +86,7 @@
     <a href="/login"><button>Back to login</button></a><br><br>
     <% if(errors) {%>
         <% errors.forEach((e) => {%>
-            <b style="color: red;"><%= e %></b><br>
+            <p style="color: red; text-align: center;"><%= e %></p>
         <%}) %>
         <br>
     <%} %>

@@ -34,8 +34,8 @@
     }
 
     button {
-    width: 20%;
-    background-color: #4CAF50;
+    width: 100%;
+    background-color: rgb(207, 29, 29);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -59,11 +59,18 @@
       font-family: arial, sans-serif;
       border-collapse: collapse;
       width: 100%;
+      text-align: center;
     }
     
     td, th {
       border: 1px solid #dddddd;
-      text-align: left;
+      text-align: center;
+      padding: 8px;
+    }
+
+    h1 {
+      border: 0px solid #dddddd;
+      text-align: center;
       padding: 8px;
     }
     
@@ -76,10 +83,10 @@
     <title>Add Product</title>
 </head>
 <body>
-<h2>Add Product</h2>
+<h1>Add Product</h1>
 <% if(errors) {%>
   <% errors.forEach((e) => {%>
-    <b style="color: red;"><%= e %></b><br>
+    <p style="color: red; text-align: center;"><%= e %></p>
   <%}) %>
 <%} %>
 <br>
@@ -92,5 +99,6 @@
   <input type="number" name="price"  value=""><br><br>
   <input type="submit" value="Add Product">
 </form>
+<a href="/"><Button>Cancel</Button></a>
 </body>
 </html>

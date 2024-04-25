@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <style>
     table {
       font-family: arial, sans-serif;
       border-collapse: collapse;
       width: 100%;
+      text-align: center;
     }
-    
+
     button {
-      width: 10%;
+      width: 25%;
       background-color: #4CAF50;
       color: white;
       padding: 14px 20px;
@@ -19,67 +21,131 @@
       cursor: pointer;
       text-align: center;
     }
-    
-    td, th {
+
+    input[type=submit] {
+      width: 15%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type=text],
+    select {
+      width: 15%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    td,
+    th {
       border: 1px solid #dddddd;
-      text-align: left;
+      text-align: center;
       padding: 8px;
     }
-    
+
+    h2 {
+      text-align: center;
+      padding: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 8px;
+    }
+
     tr:nth-child(even) {
       background-color: #dddddd;
     }
-    </style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tokopididi Lite</title>
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tokopididi Lite</title>
 </head>
+
 <body>
   <% if(findOneAccountDetail) {%>
     <a href="/accountDetail"><button>Edit Account Detail</button></a>
-  <%} %>
-  <% if(!findOneAccountDetail) {%>
-    <a href="/accountDetail"><button>Add Account Detail</button></a>
-  <%} %>
-  <a href="/logout"><button>Logout</button></a>
-    <h1>Tokopididi Lite</h1>
-    <h2>Product</h2>
-    <% if(role == 'Seller') {%>
-      <a href="/addProduct/<%= sellerProduct[0].id %>"><button>Add Product</button></a><br><br>
-      <%} %>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Stock</th>
-    <th>Price</th>
-    <th>Action</th>
-  </tr>
-  <% if(role == 'Seller') {%>
-    <%   sellerProduct[0].Products.forEach((e) => { %>
-      <tr>
-        <td><%= e.name %></td>
-        <td><%= e.stock %> </td>
-        <td><%= formatRupiah(e.price) %></td>
-        <td>
-            <a href="/addStock/<%= e.id %>/<%= userId %>"><button>Add Stock</button></a>
-            <a href="/delete/<%= e.id %>"><button>Delete</button></a>
-            <a href="/inventory/<%= e.id %>"><button>Inventory</button></a>
-        </td>
-      </tr>
-    <% }) %>
-  <%} %>
-  <% if(role == 'Buyer') {%>
-    <%   allProduct.forEach((e) => { %>
-      <tr>
-        <td><%= e.name %></td>
-        <td><%= e.stock %> </td>
-        <td><%= formatRupiah(e.price) %></td>
-        <td>
-            <a href="/orderform/<%= e.id %>"><button>Buy</button></a>
-        </td>
-      </tr>
-    <% }) %>
-  <%} %>
-</table>
+    <%} %>
+      <% if(!findOneAccountDetail) {%>
+        <a href="/accountDetail"><button>Add Account Detail</button></a>
+        <%} %>
+          <a href="/logout"><button>Logout</button></a>
+          <h1>Tokopididi Lite</h1>
+          <h2>Product</h2>
+          <% if(role=='Seller' ) {%>
+            <a href="/addProduct/<%= userId %>"><button>Add Product</button></a><br><br>
+            <%} %>
+              <% if(role=='Buyer' ) {%>
+                <a href="/orderList/<%= userId %>"><button>Order List</button></a><br><br>
+                <%} %>
+                  <form action="/">
+                    <input type="text" placeholder="Input product name" name="fillter">
+                    <input type="submit" value="Search">
+                    <br><br>
+                  </form>
+                  <table>
+                    <tr>
+                      <th>No.</th>
+                      <th>Name</th>
+                      <th>Stock</th>
+                      <th>Price</th>
+                      <th>Action</th>
+                    </tr>
+                    <% if(role=='Seller' ) {%>
+                      <% if(sellerProduct.length !== 0) {%>
+                        <% sellerProduct[0].Products.forEach((e, i)=> { %>
+                          <tr>
+                            <td>
+                              <%= i + 1 %>
+                            </td>
+                            <td>
+                              <%= e.name %>
+                            </td>
+                            <td>
+                              <%= e.stock %>
+                            </td>
+                            <td>
+                              <%= formatRupiah(e.price) %>
+                            </td>
+                            <td>
+                              <a href="/addStock/<%= e.id %>/<%= userId %>"><button>Add Stock</button></a>
+                              <a href="/delete/<%= e.id %>"><button>Delete</button></a>
+                              <a href="/inventory/<%= e.id %>"><button>Inventory</button></a>
+                            </td>
+                          </tr>
+                          <% }) %>
+                      <%} %>
+                          <%} %>
+                            <% if(role=='Buyer' ) {%>
+                              <% allProduct.forEach((e, i)=> { %>
+                                <tr>
+                                  <td>
+                                    <%= i + 1 %>
+                                  </td>
+                                  <td>
+                                    <%= e.name %>
+                                  </td>
+                                  <td>
+                                    <%= e.stock %>
+                                  </td>
+                                  <td>
+                                    <%= formatRupiah(e.price) %>
+                                  </td>
+                                  <td>
+                                    <a href="/orderform/<%= e.id %>"><button>Buy</button></a>
+                                  </td>
+                                </tr>
+                                <% }) %>
+                                  <%} %>
+                  </table>
 </body>
+
 </html>

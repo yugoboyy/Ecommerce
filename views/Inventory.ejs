@@ -6,6 +6,7 @@
       font-family: arial, sans-serif;
       border-collapse: collapse;
       width: 100%;
+      text-align: center;
     }
     
     button {
@@ -19,10 +20,17 @@
       cursor: pointer;
       text-align: center;
     }
+
+    h1 {
+      font-family: arial, sans-serif;
+      border: 0px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+    }
     
     td, th {
       border: 1px solid #dddddd;
-      text-align: left;
+      text-align: center;
       padding: 8px;
     }
     
@@ -39,15 +47,19 @@
     <h1>Inventory</h1>
 <table>
   <tr>
+    <th>No.</th>
     <th>Name</th>
     <th>Quantity</th>
+    <th>Price</th>
     <th>Amount</th>
     <th>Restock Date</th>
   </tr>
-    <%   data.forEach((e) => { %>
+    <%   data.forEach((e, i) => { %>
       <tr>
+        <td><%= i+1 %></td>
         <td><%= e.name %></td>
         <td><%= e.quantity %> </td>
+        <td><%= formatRupiah(e.Product.price) %></td> 
         <td><%= formatRupiah(e.amount) %></td>
         <td><%= e.formatDate %></td>
       </tr>

@@ -29,7 +29,7 @@ router.post('/addProduct/:UserId', Controller.postAddProduct)
 router.get('/inventory/:id', Controller.showInventory)
 router.get('/orderform/:id', Controller.getOrderForm)
 router.post('/orderform/:id', Controller.postOrderForm)
-router.get('/orderlist')
+router.get('/orderlist/:id', Controller.getOrderList)
 
 
 module.exports = router

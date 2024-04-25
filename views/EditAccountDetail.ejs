@@ -59,11 +59,18 @@
           font-family: arial, sans-serif;
           border-collapse: collapse;
           width: 100%;
+          text-align: center;
         }
         
         td, th {
           border: 1px solid #dddddd;
-          text-align: left;
+          text-align: center;
+          padding: 8px;
+        }
+
+        h1 {
+          border: 0px solid #dddddd;
+          text-align: center;
           padding: 8px;
         }
         
@@ -80,7 +87,7 @@
     <h1>Edit Account Detail</h1>
     <% if(errors) {%>
         <% errors.forEach((e) => {%>
-            <b style="color: red;"><%= e %></b><br>
+            <p style="color: red; text-align: center;"><%= e %></p>
         <%}) %>
         <br>
     <%} %>
