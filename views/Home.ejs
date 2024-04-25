@@ -1,5 +1,39 @@
 <!DOCTYPE html>
+<style>
+    .container {
+        height: 100px;
+        position: relative;
+        border: 0px solid green;
+    }
+
+    .vertical-center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        right: 0%;
+        left: 33%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    button {
+        width: 50%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    h1 {
+        text-align: center;
+    }
+</style>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +41,12 @@
 </head>
 <body>
     <h1>Tokopididi Lite</h1>
-    <a href="/login"><button>Login</button></a>
-    <a href="/registration"><button>Registration</button></a>
+    <div class="container">
+        <div class="vertical-center">
+            <a href="/login"><button>Login</button></a>
+            <a href="/registration"><button>Registration</button></a>
+        </div>
+      </div>
 </body>
+
 </html>
