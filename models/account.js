@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      
+    }
+
+    get formatDate() {
+      return this.dateOfBirth.toISOString().split('T')[0]
     }
   }
   Account.init({

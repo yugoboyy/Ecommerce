@@ -12,7 +12,7 @@
         box-sizing: border-box;
         }
 
-        input[type=password], select {
+        input[type=date], select {
         width: 100%;
         padding: 12px 20px;
         margin: 8px 0;
@@ -34,7 +34,7 @@
         }
 
         button {
-        width: 10%;
+        width: 20%;
         background-color: #4CAF50;
         color: white;
         padding: 14px 20px;
@@ -64,11 +64,12 @@
         
         td, th {
           border: 1px solid #dddddd;
-          text-align: left;
+          text-align: center;
           padding: 8px;
         }
 
         h1 {
+          border: 0px solid #dddddd;
           text-align: center;
           padding: 8px;
         }
@@ -79,29 +80,29 @@
         </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+    <title>Edit Account Detail</title>
 </head>
 <body>
-    <h1>Registration</h1>
-    <a href="/login"><button>Back to login</button></a><br><br>
+    <a href="/"><button>Back to product list</button></a>
+    <h1>Edit Account Detail</h1>
     <% if(errors) {%>
         <% errors.forEach((e) => {%>
             <p style="color: red; text-align: center;"><%= e %></p>
         <%}) %>
         <br>
     <%} %>
-    <form action="/registration" method="post">
-        <label for=""><b>Email:</b></label><br>
-        <input type="text" name="email" placeholder="Enter Name" value=""><br><br>
-        <label for=""><b>Password:</b></label><br>
-        <input type="password" name="password" placeholder="Enter Password" value=""><br><br>
-        <label for=""><b>Type:</b></label><br>
-        <select name="role">
+    <form action="/editAccountDetail" method="post">
+        <label for=""><b>Name:</b></label><br>
+        <input type="text" name="name" placeholder="Enter Name" value="<%= findOneAccountDetail.name %>"><br><br>
+        <label for=""><b>Date of birth:</b></label><br>
+        <input type="date" name="dateOfBirth" value="<%= findOneAccountDetail.formatDate %>"><br><br>
+        <label for=""><b>Gender:</b></label><br>
+        <select name="gender">
             <option value="">--Choose--</option>
-            <option value="Buyer">Buyer</option>
-            <option value="Seller">Seller</option>
+            <option <%= findOneAccountDetail.gender == 'Male' ? 'selected':'' %> value="Male">Male</option>
+            <option <%= findOneAccountDetail.gender == 'Female' ? 'selected':'' %> value="Female">Female</option>
         </select><br><br>
-        <input type="submit" value="Sign Up">
+        <input type="submit" value="Submit">
     </form>
 </body>
 </html>

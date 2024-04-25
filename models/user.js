@@ -12,21 +12,32 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.hasMany(models.Order)
+      User.belongsToMany(models.Product, {
+        through: models.Order,
+        foreignKey: 'UserId'
+      })
     }
   }
   User.init({
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
-      isEmail: true,
       validate: {
         notEmpty:{
           msg: 'Email is required'
         },
         notNull: {
           msg: 'Email is required'
-        }
+        },
+        isEmail: {
+          args: true,
+          msg: 'Format email not valid'
+        },
+      },
+      unique: {
+        args: true,
+        msg: 'Email is registered'
       }
     },
     password: {

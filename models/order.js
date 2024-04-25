@@ -11,17 +11,71 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Order.belongsTo(models.User)
+      Order.belongsTo(models.Product)
+    }
+
+    get formatDate() {
+      return this.createdAt.toISOString().split('T')[0]
     }
   }
   Order.init({
-    name: DataTypes.STRING,
-    ProductId: DataTypes.INTEGER,
-    UserId: DataTypes.INTEGER,
-    amount: DataTypes.INTEGER,
-    quantity: DataTypes.INTEGER
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty:{
+          msg: 'Name is required'
+        },
+        notNull: {
+          msg: 'Name is required'
+        }
+      }
+    },
+    ProductId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    amount: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty:{
+          msg: 'Amount is required'
+        },
+        notNull: {
+          msg: 'Amount is required'
+        }
+      }
+    },
+    quantity: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty:{
+          msg: 'Quantity is required'
+        },
+        notNull: {
+          msg: 'Quantity is required'
+        }
+      }
+    },
+    address: {
+      type: DataTypes.STRING,
+      defaultValue: "-"
+    }
   }, {
     sequelize,
     modelName: 'Order',
+    hooks: { 
+      beforeCreate(data, opt) {
+          data.amount = data.quantity * data.amount
+      }
+    }
   });
   return Order;
 };
